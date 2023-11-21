@@ -1,6 +1,4 @@
 import Articulo from "./articulo.model.js";
-import Stock from '../stock/stock.model.js';
-import Almacen from '../almacen/almacen.model.js';
 
 export const getAllModels = async (req, res) => {
   const { search } = req.params;
@@ -52,12 +50,6 @@ export const createModel = async (req, res) => {
     const newModel = new Articulo(req.body);
 
     const modelCreated = await newModel.save();
-    
-    if(modelCreated && modelCreated.inventariable){
-      const almacen = await Almacen.find({nombre: 'Principal'});
-      console.log('Almacen==>', almacen);
-      await Stock.create({articulo: modelCreated._id, almacen: almacen[0]._id,cantidad: 0});
-    }
 
     res.status(200).json(modelCreated);
   } catch (error) {

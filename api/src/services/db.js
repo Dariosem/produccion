@@ -13,8 +13,8 @@ export const pool = createPool({
 
 export const connectDB = async () => {
   try {
-    const prod = true;
-    const connectionString = prod ? 'mongodb://127.0.0.1:27017/consultorio' : 'mongodb://127.0.0.1:27017/consultorio-test'
+    const prod = false;
+    const connectionString = prod ? 'mongodb://127.0.0.1:27017/produccion' : 'mongodb://127.0.0.1:27017/produccion-test'
     await mongoose.connect(connectionString);
     console.log('>>> DB is connected');
     await seedDB();
