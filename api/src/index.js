@@ -1,0 +1,6 @@
+import app from './app.js';
+import { connectDB } from './services/db.js'
+import { PORT } from './config.js';
+
+connectDB();
+app.listen(PORT, ()=> console.log(`Server listening on port ${PORT}`));
