@@ -1,0 +1,19 @@
+.ds-nav-fixed {
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1033;
+}
+
+.sidebar {
+  margin-top: 57px;
+  background-color: #343a40;
+}
+
+.ds-nav-sidebar-fixed {
+  left: 0;
+  position: fixed;
+  top: 0;
+  z-index: 1033;
+}

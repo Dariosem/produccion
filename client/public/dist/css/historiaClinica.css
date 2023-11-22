@@ -1,0 +1,17 @@
+.imagen-budge {
+  height: 20px;
+  width: 20px;
+  
+  border-radius: 50%;
+  background-color: white;
+  position: absolute;
+  bottom: 10px;
+  right: 3px;
+}
+
+.imagen-budge i {
+  position: absolute;
+  bottom: 1px;
+  left: 2px;
+  padding: 3px;
+}
