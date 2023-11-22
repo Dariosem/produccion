@@ -10,7 +10,7 @@ const ForgotPassword = lazy(() => import('../pages/auth/forgot.password'));
 const RecoverPassword = lazy(() => import('../pages/auth/recover.password'));
 const PrivateRoutes = lazy(() => import('./private.routes'));
 const Dashboard = lazy(() => import('../pages/protected/Dashboard/Dashboard'));
-const Agenda = lazy(() => import('../pages/protected/Agenda/Agenda'));
+const Agenda = lazy(() => import('../pages/Agenda/Agenda'));
 const Perfil = lazy(() => import('../pages/protected/Perfil/perfil'));
 const GruposArticulos = lazy(() => import('../pages/protected/GrupoArticulo/GruposArticulos'))
 const GrupoArticuloCreate = lazy(() => import('../pages/protected/GrupoArticulo/GrupoArticuloCreate'))
@@ -29,31 +29,31 @@ const MainRouter = () => {
       <HashRouter>
         <NotFoundRoute>
 
-          <Route index element={<Navigate to='/agenda' />} />
+          <Route index element={<Navigate to='/landing' />} />
           <Route path="/login" element={<Login />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/recover-password" element={<RecoverPassword />} />
-          <Route path='/agenda' element={<Agenda />} />
+          <Route path='/landing' element={<Agenda />} />
           <Route element={<PrivateRoutes isAllowed={!!user} />}>
             <Route path='/perfil' element={<Perfil />} />
             <Route path='/perfil/:userId' element={<Perfil />} />
           </Route>
 
-          <Route element={<PrivateRoutes isAllowed={!!user && (isAdmin || isSupervisor || isOperario)} redirectTo='/dashboard' />}>
+          <Route element={<PrivateRoutes isAllowed={!!user && (isAdmin || isSupervisor || isOperario)} redirectTo='/landing' />}>
 
             <Route path="/grupo-articulos" element={<GruposArticulos />} />
             <Route path="/grupo-articulos/create" element={<GrupoArticuloCreate />} />
             <Route path="/grupo-articulos/update/:id" element={<GrupoArticuloEdit />} />
           </Route>
 
-          <Route element={<PrivateRoutes isAllowed={!!user && (isAdmin || isSupervisor)} redirectTo='/dashboard' />}>
+          <Route element={<PrivateRoutes isAllowed={!!user && (isAdmin || isSupervisor)} redirectTo='/landing' />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/articulos" element={<Articulos />} />
             <Route path="/articulos/create" element={<ArticuloCreate />} />
             <Route path="/articulos/update/:id" element={<ArticuloCreate />} />
           </Route>
 
-          <Route element={<PrivateRoutes isAllowed={!!user && isAdmin} redirectTo='/dashboard' />}>
+          <Route element={<PrivateRoutes isAllowed={!!user && isAdmin} redirectTo='/landing' />}>
             <Route path="/usuarios" element={<Usuarios />} />
             <Route path="/usuarios/create" element={<CreateUsuario />} />
             <Route path="/usuarios/update/:id" element={<UpdateUsuario />} />
